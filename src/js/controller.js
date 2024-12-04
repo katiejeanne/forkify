@@ -21,6 +21,8 @@ const controlRecipes = async function () {
     recipeView.renderSpinner();
     // await new Promise(resolve => setTimeout(resolve, 1000));  Add delay to make spinner more visible
 
+    resultsView.update(model.getSearchResultsPage());
+
     await model.loadRecipe(id);
 
     // Rendering the recipe
