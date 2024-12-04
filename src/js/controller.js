@@ -69,9 +69,18 @@ const controlPagination = function (goToPage) {
   paginationView.render(model.state.search);
 };
 
+const controlAddBookmark = function () {
+  if (model.state.recipe.bookmarked)
+    model.deleteBookmark(model.state.recipe.id);
+  else model.addBookmark(model.state.recipe);
+
+  recipeView.update(model.state.recipe);
+};
+
 const init = function () {
   recipeView.addRenderEventHandler(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
+  recipeView.addHandlerAddBookmark(controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
 };
